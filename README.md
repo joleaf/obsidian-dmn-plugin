@@ -2,6 +2,8 @@
 
 This plugin lets you view DMNs interactively in your [Obsidian](https://www.obsidian.md) notes.
 The viewer is based on the [dmn-js](https://github.com/bpmn-io/dmn-js) library.
+If you want to evaluate/execute your DMNs inside your note, look at the [DMN Eval Plugin](https://github.com/joleaf/obsidian-dmn-eval-plugin).
+
 
 ## Install ..
 
