@@ -1,17 +1,19 @@
-import {Plugin} from "obsidian";
+import {Plugin, WorkspaceLeaf} from "obsidian";
 import {ObsidianDmnPluginSettings, ObsidianDmnPluginSettingsTab} from "./settings";
 import Viewer from "dmn-js/lib/NavigatedViewer";
 import YAML from 'yaml'
+import {DmnModelerView, VIEW_TYPE_DMN} from "./dmnModeler";
 
 interface DmnNodeParameters {
     url: string;
-    decisionId: string;
+    decisionid: string;
     opendiagram: boolean;
     showzoom: boolean;
     height: number;
     zoom: number;
     x: number;
     y: number;
+    forcewhitebackground: boolean;
 }
 
 export default class ObsidianDmnPlugin extends Plugin {
@@ -20,8 +22,16 @@ export default class ObsidianDmnPlugin extends Plugin {
     async onload() {
         console.log("DMN loading...");
 
+        // Add settings
         this.settings = Object.assign(new ObsidianDmnPluginSettings(), await this.loadData());
         this.addSettingTab(new ObsidianDmnPluginSettingsTab(this.app, this));
+
+        // Add modeler
+        // this.registerView(
+        //   VIEW_TYPE_DMN,
+        //   (leaf: WorkspaceLeaf) => new DmnModelerView(leaf)
+        //);
+        //this.registerExtensions(["dmn"], VIEW_TYPE_DMN);
 
         this.registerMarkdownCodeBlockProcessor("dmn", async (src, el, ctx) => {
             // Get Parameters
@@ -48,8 +58,18 @@ export default class ObsidianDmnPlugin extends Plugin {
                     href.href = parameters.url;
                     href.className = "internal-link";
                 }
-                const dmnDiv = rootDiv.createEl("div");
-                dmnDiv.addClass("dmn-view");
+                const dmnDiv = rootDiv.createEl("div", {cls: "dmn-view"});
+                if (parameters.forcewhitebackground) {
+                    dmnDiv.addClass("dmn-view-white-background");
+                } else {
+                    // @ts-ignore
+                    const theme = app.getTheme();
+                    if (theme === 'obsidian') {
+                        dmnDiv.addClass("dmn-view-obsidian-theme");
+                    } else if (theme === 'moonstone') {
+                        dmnDiv.addClass("dmn-view-moonstone-theme");
+                    }
+                }
                 const xml = await this.app.vault.adapter.read(parameters.url);
                 dmnDiv.setAttribute("style", "height: " + parameters.height + "px;");
                 const dmnViewer =
@@ -62,12 +82,12 @@ export default class ObsidianDmnPlugin extends Plugin {
                 const p_zoom = parameters.zoom;
                 const p_x = parameters.x;
                 const p_y = parameters.y;
-                const decisionId = parameters.decisionId;
+                const decisionId = parameters.decisionid;
                 dmnViewer.importXML(xml).then(function (result: { warnings: any; }) {
                     // If requested, open directly a decision
                     if (decisionId !== undefined) {
                         dmnViewer.getViews().forEach(function (view: any) {
-                            if (view.element.id === parameters?.decisionId) {
+                            if (view.element.id === parameters?.decisionid) {
                                 dmnViewer.open(view);
                             }
                         });
@@ -157,6 +177,10 @@ export default class ObsidianDmnPlugin extends Plugin {
             parameters.y = 0;
         }
         parameters.y *= 10
+
+        if (parameters.forcewhitebackground === undefined) {
+            parameters.forcewhitebackground = this.settings.force_white_background_by_default;
+        }
 
         return parameters;
     }

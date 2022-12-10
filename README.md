@@ -2,8 +2,8 @@
 
 This plugin lets you view DMNs interactively in your [Obsidian](https://www.obsidian.md) notes.
 The viewer is based on the [dmn-js](https://github.com/bpmn-io/dmn-js) library.
-If you want to evaluate/execute your DMNs inside your note, look at the [DMN Eval Plugin](https://github.com/joleaf/obsidian-dmn-eval-plugin).
-
+If you want to evaluate/execute your DMNs inside your note, look at
+the [DMN Eval Plugin](https://github.com/joleaf/obsidian-dmn-eval-plugin).
 
 ## Install ..
 
@@ -35,16 +35,17 @@ url: [[my-diagram.dmn]]
 
 You can customize the view with the following parameters:
 
-| Parameter   | Description                                                | Values                                                  |
-|-------------|------------------------------------------------------------|---------------------------------------------------------|
-| url         | The url of the *.dmn file (required).                      | Relative/Absolute path, or `[[*.dmn]]` as markdown link. |
-| decisionId  | An ID of a decision table to open (if empty open the DRD). | String value                                            |
-| height      | The height of the rendered canvas.                         | [300..1000]                                             |
-| opendiagram | Show a link to the *.dmn file.                             | True/False                                              |
-| showzoom    | Show the zoom buttons below the canvas.                    | True/False                                              |
-| zoom        | Set the zoom level. Default is 'fit-viewport'.             | 0.0 - 10.0                                              |
-| x           | Set the x coordinate, if a zoom value is set.              | 0 - ... (default: 0)                                    |
-| y           | Set the y coordinate, if a zoom value is set.              | 0 - ... (default: 0)                                    |
+| Parameter            | Description                                                | Values                                                   |
+|----------------------|------------------------------------------------------------|----------------------------------------------------------|
+| url                  | The url of the *.dmn file (required).                      | Relative/Absolute path, or `[[*.dmn]]` as markdown link. |
+| decisionid           | An ID of a decision table to open (if empty open the DRD). | String value                                             |
+| height               | The height of the rendered canvas.                         | [300..1000]                                              |
+| opendiagram          | Show a link to the *.dmn file.                             | True/False                                               |
+| showzoom             | Show the zoom buttons below the canvas.                    | True/False                                               |
+| zoom                 | Set the zoom level. Default is 'fit-viewport'.             | 0.0 - 10.0                                               |
+| x                    | Set the x coordinate, if a zoom value is set.              | 0 - ... (default: 0)                                     |
+| y                    | Set the y coordinate, if a zoom value is set.              | 0 - ... (default: 0)                                     |
+| forcewhitebackground | Force a white background.                                  | True/False                                               |
 
 ### Example
 

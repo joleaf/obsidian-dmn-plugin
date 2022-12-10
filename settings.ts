@@ -9,6 +9,7 @@ export class ObsidianDmnPluginSettings {
     opendiagram_by_default: boolean = true;
     showzoom_by_default: boolean = true;
     height_by_default: number = 400;
+    force_white_background_by_default: boolean = true;
 }
 
 export class ObsidianDmnPluginSettingsTab extends PluginSettingTab {
@@ -50,6 +51,15 @@ export class ObsidianDmnPluginSettingsTab extends PluginSettingTab {
             .addToggle(toggle => toggle.setValue(this.plugin.settings.showzoom_by_default)
                 .onChange((value) => {
                     this.plugin.settings.showzoom_by_default = value;
+                    this.plugin.saveData(this.plugin.settings);
+                }));
+
+        new Setting(containerEl)
+            .setName("Default force white background")
+            .setDesc("Set the default for forcing a white background")
+            .addToggle(toggle => toggle.setValue(this.plugin.settings.force_white_background_by_default)
+                .onChange((value) => {
+                    this.plugin.settings.force_white_background_by_default = value;
                     this.plugin.saveData(this.plugin.settings);
                 }));
 

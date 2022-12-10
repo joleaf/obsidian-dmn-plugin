@@ -2,7 +2,13 @@
 
 All changes to this plugin are listed here.
 
-## 0.1.0 (14.11.2022)
+## 0.2.0 (10.12.2022)
+
+### Added
+
+- Add transparent background option
+
+## 0.1.0 (03.12.2022)
 
 ### Added
 
