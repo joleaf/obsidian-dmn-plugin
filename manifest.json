@@ -6,5 +6,6 @@
 	"description": "This plugin enables viewing DMNs using dmn-js.",
 	"author": "JoLeaf",
 	"authorUrl": "https://github.com/JoLeaf",
+	"fundingUrl": "https://ko-fi.com/joleaf",
 	"isDesktopOnly": false
 }
