@@ -1,7 +1,6 @@
-import {Plugin, WorkspaceLeaf} from "obsidian";
+import {Plugin, parseYaml} from "obsidian";
 import {ObsidianDmnPluginSettings, ObsidianDmnPluginSettingsTab} from "./settings";
 import Viewer from "dmn-js/lib/NavigatedViewer";
-import YAML from 'yaml'
 import {DmnModelerView, VIEW_TYPE_DMN} from "./dmnModeler";
 
 interface DmnNodeParameters {
@@ -144,7 +143,7 @@ export default class ObsidianDmnPlugin extends Plugin {
             jsonString = jsonString.replace("]]", ']]"');
         }
 
-        const parameters: DmnNodeParameters = YAML.parse(jsonString);
+        const parameters: DmnNodeParameters = parseYaml(jsonString);
 
         //Transform internal Link to external
         if (parameters.url.startsWith("[[")) {
