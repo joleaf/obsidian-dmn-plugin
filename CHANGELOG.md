@@ -2,7 +2,7 @@
 
 All changes to this plugin are listed here.
 
-## 0.2.1 (10.12.2022)
+## 0.2.1 (28.12.2022)
 
 ### Changed
 
