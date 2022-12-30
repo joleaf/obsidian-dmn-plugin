@@ -7,7 +7,7 @@ the [DMN Eval Plugin](https://github.com/joleaf/obsidian-dmn-eval-plugin).
 
 ## Install ..
 
-### .. automatically in Obsidian (not yet)
+### .. automatically in Obsidian
 
 1. Go to **Community Plugins** in your Obsidian Settings and **disable** Safe Mode
 2. Click on **Browse** and search for "DMN Plugin"
