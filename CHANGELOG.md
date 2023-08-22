@@ -2,6 +2,16 @@
 
 All changes to this plugin are listed here.
 
+## 0.3.0 (22.08.2023)
+
+### Added
+- DMN Modeler
+
+### Changed
+
+- Load CSS from Remote
+- Updated DMN-js to version 14.1.6
+
 ## 0.2.1 (28.12.2022)
 
 ### Changed

@@ -23,7 +23,7 @@ export class DmnModelerView extends TextFileView {
     }
 
     async onOpen() {
-        let bpmnSave = this.contentEl.createEl("button", {text: "Save"});
+        let dmnSave = this.contentEl.createEl("button", {text: "Save"});
         this.dmnDiv = this.contentEl.createEl("div", {cls: "dmn-view dmn-fullscreen"});
         this.dmnModeler = new Modeler({
             container: this.dmnDiv,
@@ -35,14 +35,19 @@ export class DmnModelerView extends TextFileView {
 
         const dmnModeler = this.dmnModeler
         const thisRef = this;
+        // Not working atm
         this.dmnModeler.on("commandStack.changed", function () {
             dmnModeler.saveXML({format: true}).then(function (data: any) {
                 const {xml} = data;
                 thisRef.data = xml;
             });
         });
-        bpmnSave.addEventListener("click", function (e: Event) {
-            thisRef.save();
+        dmnSave.addEventListener("click", function (e: Event) {
+            dmnModeler.saveXML({format: true}).then(function (data: any) {
+                const {xml} = data;
+                thisRef.data = xml;
+                thisRef.save();
+            });
         });
     }
 
