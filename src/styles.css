@@ -1,0 +1,47 @@
+@import "dmn-js/dist/assets/diagram-js.css";
+@import "dmn-js/dist/assets/dmn-js-shared.css";
+@import "dmn-js/dist/assets/dmn-js-drd.css";
+@import "dmn-js/dist/assets/dmn-js-decision-table.css";
+@import "dmn-js/dist/assets/dmn-js-decision-table-controls.css";
+@import "dmn-js/dist/assets/dmn-js-literal-expression.css";
+@import "dmn-js/dist/assets/dmn-font/css/dmn.css";
+/* Styles */
+
+.dmn-view {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+/* Dark mode from system */
+@media (prefers-color-scheme: dark) {
+    .dmn-view {
+        filter: invert(85%);
+    }
+}
+
+.dmn-view .input-cell, .output-cell {
+    background-color: white !important;
+}
+
+.dmn-view-white-background {
+    background-color: white !important;
+    filter: invert(0%) !important;
+}
+
+.dmn-view-obsidian-theme {
+    filter: invert(85%);
+}
+
+.dmn-view-moonstone-theme {
+    filter: invert(0%) !important;
+}
+
+.dmn-fullscreen {
+    height: 100%;
+}
+
+.dmn-definitions {
+    display: none;
+}

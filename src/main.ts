@@ -1,7 +1,7 @@
 import {Plugin, parseYaml} from "obsidian";
 import {ObsidianDmnPluginSettings, ObsidianDmnPluginSettingsTab} from "./settings";
 import Viewer from "dmn-js/lib/NavigatedViewer";
-import {DmnModelerView, VIEW_TYPE_DMN} from "./dmnModeler";
+import {DmnModelerView, VIEW_TYPE_DMN} from "../dmnModeler";
 
 interface DmnNodeParameters {
     url: string;
