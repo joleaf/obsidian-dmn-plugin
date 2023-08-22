@@ -1,7 +1,7 @@
-import {Plugin, parseYaml} from "obsidian";
+import {Plugin, parseYaml, WorkspaceLeaf} from "obsidian";
 import {ObsidianDmnPluginSettings, ObsidianDmnPluginSettingsTab} from "./settings";
 import Viewer from "dmn-js/lib/NavigatedViewer";
-import {DmnModelerView, VIEW_TYPE_DMN} from "../dmnModeler";
+import {DmnModelerView, VIEW_TYPE_DMN} from "./dmnModeler";
 
 interface DmnNodeParameters {
     url: string;
@@ -26,11 +26,11 @@ export default class ObsidianDmnPlugin extends Plugin {
         this.addSettingTab(new ObsidianDmnPluginSettingsTab(this.app, this));
 
         // Add modeler
-        // this.registerView(
-        //   VIEW_TYPE_DMN,
-        //   (leaf: WorkspaceLeaf) => new DmnModelerView(leaf)
-        //);
-        //this.registerExtensions(["dmn"], VIEW_TYPE_DMN);
+        this.registerView(
+           VIEW_TYPE_DMN,
+           (leaf: WorkspaceLeaf) => new DmnModelerView(leaf)
+        );
+        this.registerExtensions(["dmn"], VIEW_TYPE_DMN);
 
         this.registerMarkdownCodeBlockProcessor("dmn", async (src, el, ctx) => {
             // Get Parameters
