@@ -39,7 +39,7 @@
         color: black !important;
     }
 }
-.dmn-view .input-cell, .output-cell, .annotation {
+.dmn-view .input-cell, .dmn-view .output-cell, .dmn-view .annotation {
     background-color: white !important;
 }
 
