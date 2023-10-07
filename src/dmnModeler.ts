@@ -1,5 +1,5 @@
 import Modeler from "dmn-js/lib/Modeler";
-import {TextFileView} from "obsidian";
+import {setIcon, TextFileView} from "obsidian";
 
 export const VIEW_TYPE_DMN = "dmn-view";
 
@@ -23,7 +23,8 @@ export class DmnModelerView extends TextFileView {
     }
 
     async onOpen() {
-        let dmnSave = this.contentEl.createEl("button", {text: "Save"});
+        let dmnSave = this.contentEl.createEl("button", {text: "Save", placeholder:"Save"});
+        setIcon(dmnSave, "save");
         this.dmnDiv = this.contentEl.createEl("div", {cls: "dmn-view dmn-fullscreen"});
         this.dmnModeler = new Modeler({
             container: this.dmnDiv,

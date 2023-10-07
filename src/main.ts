@@ -1,4 +1,4 @@
-import {Plugin, parseYaml, WorkspaceLeaf} from "obsidian";
+import {Plugin, parseYaml, WorkspaceLeaf, setIcon} from "obsidian";
 import {ObsidianDmnPluginSettings, ObsidianDmnPluginSettingsTab} from "./settings";
 import Viewer from "dmn-js/lib/NavigatedViewer";
 import {DmnModelerView, VIEW_TYPE_DMN} from "./dmnModeler";
@@ -27,8 +27,8 @@ export default class ObsidianDmnPlugin extends Plugin {
 
         // Add modeler
         this.registerView(
-           VIEW_TYPE_DMN,
-           (leaf: WorkspaceLeaf) => new DmnModelerView(leaf)
+            VIEW_TYPE_DMN,
+            (leaf: WorkspaceLeaf) => new DmnModelerView(leaf)
         );
         this.registerExtensions(["dmn"], VIEW_TYPE_DMN);
 
@@ -56,6 +56,7 @@ export default class ObsidianDmnPlugin extends Plugin {
                     const href = rootDiv.createEl("a", {text: "Open DMN"});
                     href.href = parameters.url;
                     href.className = "internal-link";
+                    setIcon(href, "file-edit");
                 }
                 const dmnDiv = rootDiv.createEl("div", {cls: "dmn-view"});
                 if (parameters.forcewhitebackground) {
@@ -130,6 +131,8 @@ export default class ObsidianDmnPlugin extends Plugin {
                                 dmnViewer.getActiveViewer().get("zoomScroll").stepZoom(-0.5);
                             }
                         });
+                    setIcon(zoomInBtn, "zoom-in");
+                    setIcon(zoomOutBtn, "zoom-out");
                 }
             } catch (error) {
                 el.createEl("h3", {text: error});
