@@ -2,9 +2,18 @@
 
 All changes to this plugin are listed here.
 
-## 0.3.0 (22.08.2023)
+## 0.4.0 (2023-10-07)
+
+### Changed
+
+- Updated DMN-js to version 14.4.3
+- Add icons for zoom & save
+- Improved input fields in dark mode
+
+## 0.3.0 (2023-08-22)
 
 ### Added
+
 - DMN Modeler
 
 ### Changed
@@ -12,19 +21,19 @@ All changes to this plugin are listed here.
 - Load CSS from Remote
 - Updated DMN-js to version 14.1.6
 
-## 0.2.1 (28.12.2022)
+## 0.2.1 (2022-12-28)
 
 ### Changed
 
 - Use obsidian parseYaml
 
-## 0.2.0 (10.12.2022)
+## 0.2.0 (2022-12-10)
 
 ### Added
 
 - Add transparent background option
 
-## 0.1.0 (03.12.2022)
+## 0.1.0 (2022-12-03)
 
 ### Added
 
