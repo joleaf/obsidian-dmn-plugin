@@ -83,6 +83,28 @@ export default class ObsidianDmnPlugin extends Plugin {
                 const p_x = parameters.x;
                 const p_y = parameters.y;
                 const decisionId = parameters.decisionid;
+                let zoomDiv = null;
+                if (parameters.showzoom) {
+                    zoomDiv = rootDiv.createEl("div");
+                    const zoomInBtn = zoomDiv.createEl("button", {"text": "+"});
+                    zoomInBtn.addEventListener("click",
+                        (e: Event) => {
+                            // only drd (not table view), see https://github.com/camunda/camunda-modeler/issues/117
+                            if (dmnViewer.getActiveView().type === 'drd') {
+                                dmnViewer.getActiveViewer().get("zoomScroll").stepZoom(0.5);
+                            }
+                        });
+                    const zoomOutBtn = zoomDiv.createEl("button", {"text": "-"});
+                    zoomOutBtn.addEventListener("click",
+                        (e: Event) => {
+                            // only drd (not table view), see https://github.com/camunda/camunda-modeler/issues/117
+                            if (dmnViewer.getActiveView().type === 'drd') {
+                                dmnViewer.getActiveViewer().get("zoomScroll").stepZoom(-0.5);
+                            }
+                        });
+                    setIcon(zoomInBtn, "zoom-in");
+                    setIcon(zoomOutBtn, "zoom-out");
+                }
                 dmnViewer.importXML(xml).then(function (result: { warnings: any; }) {
                     // If requested, open directly a decision
                     if (decisionId !== undefined) {
@@ -113,27 +135,6 @@ export default class ObsidianDmnPlugin extends Plugin {
                     dmnViewer.destroy();
                     rootDiv.createEl("h3", {text: warnings + " " + message});
                 });
-                if (parameters.showzoom) {
-                    const zoomDiv = rootDiv.createEl("div");
-                    const zoomInBtn = zoomDiv.createEl("button", {"text": "+"});
-                    zoomInBtn.addEventListener("click",
-                        (e: Event) => {
-                            // only drd (not table view), see https://github.com/camunda/camunda-modeler/issues/117
-                            if (dmnViewer.getActiveView().type === 'drd') {
-                                dmnViewer.getActiveViewer().get("zoomScroll").stepZoom(0.5);
-                            }
-                        });
-                    const zoomOutBtn = zoomDiv.createEl("button", {"text": "-"});
-                    zoomOutBtn.addEventListener("click",
-                        (e: Event) => {
-                            // only drd (not table view), see https://github.com/camunda/camunda-modeler/issues/117
-                            if (dmnViewer.getActiveView().type === 'drd') {
-                                dmnViewer.getActiveViewer().get("zoomScroll").stepZoom(-0.5);
-                            }
-                        });
-                    setIcon(zoomInBtn, "zoom-in");
-                    setIcon(zoomOutBtn, "zoom-out");
-                }
             } catch (error) {
                 el.createEl("h3", {text: error});
             }
