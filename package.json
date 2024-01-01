@@ -1,6 +1,6 @@
 {
   "name": "dmn-plugin",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "This plugin enables viewing DMNs using dmn-js.",
   "main": "main.js",
   "scripts": {
