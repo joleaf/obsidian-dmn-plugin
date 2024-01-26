@@ -22,6 +22,6 @@
     "typescript": "5.3.3"
   },
   "dependencies": {
-    "dmn-js": "^15.0.0"
+    "dmn-js": "^15.1.0"
   }
 }

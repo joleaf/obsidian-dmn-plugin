@@ -6,7 +6,7 @@ All changes to this plugin are listed here.
 
 ### Changed
 
-- Updated DMN-js to version 15.0.0
+- Updated DMN-js to version 15.1.0
 
 ## 0.4.1 (2024-01-01)
 
