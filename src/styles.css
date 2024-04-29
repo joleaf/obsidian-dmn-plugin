@@ -20,11 +20,22 @@
     font-style: normal;
 }
 
-.dmn-view {
-    width: 100%;
+.dmn-content {
     display: flex;
     flex-wrap: wrap;
+    flex-flow: column;
+    row-gap: 5px;
+    height: 100%;
+}
+
+.dmn-view {
     cursor: pointer;
+    width: 100%;
+}
+
+.dmn-view-modeler {
+    flex: 1;
+    border: 1px dashed #212121;
 }
 
 /* Dark mode from system */
@@ -34,11 +45,12 @@
         color: black !important;
     }
 
-    .dmn-view  textarea, .dmn-view .dms-input, .dmn-view  input.metadata-input-text, .dmn-view  input[type='date'], .dmn-view  input[type='datetime-local'], .dmn-view  input[type='text'], .dmn-view  input[type='search'], .dmn-view  input[type='email'], .dmn-view  input[type='password'], .dmn-view  input[type='number'], .dmn-view  .bio-properties-panel-input {
+    .dmn-view textarea, .dmn-view .dms-input, .dmn-view input.metadata-input-text, .dmn-view input[type='date'], .dmn-view input[type='datetime-local'], .dmn-view input[type='text'], .dmn-view input[type='search'], .dmn-view input[type='email'], .dmn-view input[type='password'], .dmn-view input[type='number'], .dmn-view .bio-properties-panel-input {
         background-color: white !important;
         color: black !important;
     }
 }
+
 .dmn-view .input-cell, .dmn-view .output-cell, .dmn-view .annotation {
     background-color: white !important;
 }
@@ -62,4 +74,8 @@
 
 .dmn-definitions {
     display: none;
+}
+
+.dmn-view > canvas {
+    pointer-events: none;
 }

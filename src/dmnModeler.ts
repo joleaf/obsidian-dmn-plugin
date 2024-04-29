@@ -17,15 +17,16 @@ export class DmnModelerView extends TextFileView {
         this.dmnXml = data;
         const thisRef = this;
         this.dmnModeler.importXML(this.dmnXml).catch(function (err: { warnings: any; message: string; }) {
-            thisRef.clear();
-            thisRef.contentEl.createEl("div", {text: err.message});
+            console.error(err);
         });
     }
 
     async onOpen() {
-        let dmnSave = this.contentEl.createEl("button", {text: "Save", placeholder:"Save"});
+        let contentEl = this.contentEl.createEl("div", {cls: "dmn-content"});
+        let buttonbar = contentEl.createEl("div");
+        let dmnSave = buttonbar.createEl("button", {text: "Save", placeholder: "Save"});
         setIcon(dmnSave, "save");
-        this.dmnDiv = this.contentEl.createEl("div", {cls: "dmn-view dmn-fullscreen"});
+        this.dmnDiv = contentEl.createEl("div", {cls: "dmn-view dmn-view-modeler"});
         this.dmnModeler = new Modeler({
             container: this.dmnDiv,
             keyboard: {
@@ -57,7 +58,7 @@ export class DmnModelerView extends TextFileView {
     }
 
     clear() {
-        this.contentEl.empty();
+
     }
 
     getViewType() {

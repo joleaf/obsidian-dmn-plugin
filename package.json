@@ -1,6 +1,6 @@
 {
   "name": "dmn",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "This plugin enables viewing/editing DMNs using dmn-js.",
   "main": "main.js",
   "scripts": {
@@ -22,6 +22,6 @@
     "typescript": "5.3.3"
   },
   "dependencies": {
-    "dmn-js": "^15.1.0"
+    "dmn-js": "^16.1.0"
   }
 }
