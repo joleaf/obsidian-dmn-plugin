@@ -2,6 +2,13 @@
 
 All changes to this plugin are listed here.
 
+## 0.6.0 (2026-08-28)
+
+### Changed
+
+- Updated DMN-js to version 17.8.0
+- Fixed css imports
+
 ## 0.5.1 (2024-04-29)
 
 ### Changed

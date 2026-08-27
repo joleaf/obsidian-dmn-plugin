@@ -1,7 +1,7 @@
 {
   "name": "dmn",
-  "version": "0.5.1",
-  "description": "This plugin enables viewing/editing DMNs using dmn-js.",
+  "version": "0.6.0",
+  "description": "DMN viewer and editor.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
@@ -13,15 +13,15 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.10.6",
-    "@typescript-eslint/eslint-plugin": "6.16.0",
-    "@typescript-eslint/parser": "6.16.0",
+    "@typescript-eslint/eslint-plugin": "^8.68.0",
+    "@typescript-eslint/parser": "^8.68.0",
     "builtin-modules": "3.3.0",
-    "esbuild": "0.19.11",
+    "esbuild": "^0.28.2",
     "obsidian": "latest",
     "tslib": "2.6.2",
     "typescript": "5.3.3"
   },
   "dependencies": {
-    "dmn-js": "^16.1.0"
+    "dmn-js": "^17.8.0"
   }
 }
