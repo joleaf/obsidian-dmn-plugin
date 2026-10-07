@@ -4,12 +4,15 @@
 @import "dmn-js/dist/assets/dmn-js-decision-table.css";
 @import "dmn-js/dist/assets/dmn-js-decision-table-controls.css";
 @import "dmn-js/dist/assets/dmn-js-literal-expression.css";
-@import "dmn-js/dist/assets/dmn-font/css/dmn.css";
+/* Only the base64-embedded font copy is imported: the file-based one
+   (dmn.css) references font assets esbuild cannot bundle, and the
+   embeddedFontOnly plugin in esbuild.config.mjs strips its @font-face
+   from dmn-embedded.css, keeping just the embedded copy. */
 @import "dmn-js/dist/assets/dmn-font/css/dmn-embedded.css";
 @import "dmn-js/dist/assets/dmn-font/css/dmn-codes.css";
+@import "diagram-js-minimap/assets/diagram-js-minimap.css";
 /* Styles */
 
-/* Load fonts from remote */
 .dmn-content {
     display: flex;
     flex-wrap: wrap;
@@ -28,17 +31,29 @@
     border: 1px dashed #212121;
 }
 
-/* Dark mode from system */
-@media (prefers-color-scheme: dark) {
-    .dmn-view {
-        filter: invert(85%);
-        color: black !important;
-    }
+/* Dark mode: Obsidian signals the active theme with the theme-dark class
+   on <body> (which also covers "system" mode), so key the dark styling
+   off that instead of prefers-color-scheme, which only reflects the OS
+   and disagrees with a theme the user has forced light or dark. */
+.theme-dark .dmn-view {
+    filter: invert(85%);
+    color: black !important;
+}
 
-    .dmn-view textarea, .dmn-view .dms-input, .dmn-view input.metadata-input-text, .dmn-view input[type='date'], .dmn-view input[type='datetime-local'], .dmn-view input[type='text'], .dmn-view input[type='search'], .dmn-view input[type='email'], .dmn-view input[type='password'], .dmn-view input[type='number'], .dmn-view .bio-properties-panel-input {
-        background-color: white !important;
-        color: black !important;
-    }
+/* Inputs drawn inside the (inverted) canvas need to be forced back to
+   white/black so they stay legible on the inverted surface. */
+.theme-dark .dmn-view textarea,
+.theme-dark .dmn-view .dms-input,
+.theme-dark .dmn-view input.metadata-input-text,
+.theme-dark .dmn-view input[type='date'],
+.theme-dark .dmn-view input[type='datetime-local'],
+.theme-dark .dmn-view input[type='text'],
+.theme-dark .dmn-view input[type='search'],
+.theme-dark .dmn-view input[type='email'],
+.theme-dark .dmn-view input[type='password'],
+.theme-dark .dmn-view input[type='number'] {
+    background-color: white !important;
+    color: black !important;
 }
 
 .dmn-view .input-cell, .dmn-view .output-cell, .dmn-view .annotation {
@@ -63,6 +78,54 @@
 }
 
 .dmn-definitions {
+    display: none;
+}
+
+/* The popup menu ("Change element") is rendered into <body> (see
+   dmnModeler.ts), so the --popup-* variables diagram-js defines on
+   .djs-parent don't reach it and it would end up transparent. Define
+   them here, mapped to Obsidian's theme variables, so the popup follows
+   the active theme (white in light mode, dark in dark mode). */
+.djs-popup {
+    color: var(--text-normal, hsl(225, 10%, 15%));
+
+    --popup-font-family: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+    --popup-font-size: 14px;
+    --popup-secondary-font-size: .9em;
+
+    --popup-background-color: var(--background-secondary, #ffffff);
+    --popup-border-color: var(--background-modifier-border, hsl(225, 10%, 85%));
+    --popup-shadow-color: hsla(225, 10%, 15%, 30%);
+
+    --popup-disabled-color: var(--text-faint, hsl(225, 10%, 35%));
+    --popup-description-color: var(--text-muted, hsl(225, 10%, 45%));
+    --popup-no-results-color: var(--text-muted, hsl(225, 10%, 55%));
+    --popup-entry-title-color: var(--text-muted, hsl(225, 10%, 55%));
+    --popup-entry-hover-color: var(--background-modifier-hover, hsl(225, 10%, 95%));
+
+    --popup-search-border-color: var(--background-modifier-border, hsl(225, 10%, 75%));
+    --popup-search-focus-border-color: var(--interactive-accent, hsl(205, 100%, 50%));
+    --popup-search-focus-background-color: var(--background-primary, #ffffff);
+
+    --popup-header-entry-selected-color: var(--interactive-accent, hsl(205, 100%, 50%));
+    --popup-header-group-divider-color: var(--background-modifier-border, hsl(225, 10%, 75%));
+
+    --popup-tab-color: var(--text-muted, hsl(225, 10%, 55%));
+    --popup-tab-hover-color: var(--text-normal, hsl(225, 10%, 15%));
+    --popup-tab-active-color: var(--text-normal, hsl(225, 10%, 15%));
+    --popup-tab-active-border-color: var(--interactive-accent, hsl(205, 100%, 50%));
+    --popup-tab-strip-border-color: var(--background-modifier-border, hsl(225, 10%, 90%));
+    --popup-tab-focus-border-color: var(--interactive-accent, hsl(205, 100%, 50%));
+}
+
+/* keep the search field transparent on the themed popup surface, with
+   theme-colored text, regardless of ambient input styles */
+.djs-popup-search input {
+    background-color: transparent;
+    color: inherit;
+}
+
+.hide {
     display: none;
 }
 

@@ -2,6 +2,35 @@
 
 All changes to this plugin are listed here.
 
+## 1.0.0 (2026-10-07)
+
+### Breaking Change
+
+- Support only Obsidian >= 1.13.0
+
+### New
+
+- Autocomplete for the code block parameters (`url`, `decisionid`, `height`, `opendiagram`, `showzoom`, `enablepanzoom`, `zoom`, `x`, `y`, `forcewhitebackground`) while typing inside ```dmn blocks
+- New command "Insert / Edit DMN code block": create or edit a code block from a popup, with a `*.dmn` file selector and a decision table field
+- New command "Create DMN": creates a new `*.dmn` file in the vault and opens it in the modeler (same as the "New DMN" ribbon icon)
+- Embed a `*.dmn` file directly with `![[my-diagram.dmn]]` (uses the defaults from the plugin settings)
+- The modeler now shows the full DMN (DRD view) and lets you edit every decision table, literal expression, and boxed expression
+- Undo/Redo and Export SVG in the modeler
+- Minimap and grid in the modeler (toggleable in the plugin settings)
+- New `enablepanzoom` parameter for the code block (default in the settings)
+- Settings tab rewritten: defaults, code block parameters (with a parameter table in the settings), and modeler options
+- Show a readable error message when importing a `*.dmn` file fails
+
+### Fixed
+
+- Keyboard shortcuts in the modeler now work inside Obsidian: the diagram canvas is focused when the mouse enters it
+- The modeler's context menu is now rendered outside the canvas, so it is no longer clipped
+- The diagram font is embedded, so it renders correctly in the packaged plugin
+
+### Updated
+
+- Bump dmn-js to 17.12.3
+
 ## 0.6.0 (2026-08-28)
 
 ### Changed

@@ -1,0 +1,10 @@
+{
+  "opendiagram_by_default": true,
+  "showzoom_by_default": true,
+  "enablepanzoom_by_default": true,
+  "height_by_default": 400,
+  "force_white_background_by_default": true,
+  "enable_minimap": false,
+  "enable_grid": false,
+  "readonly_by_default": true
+}

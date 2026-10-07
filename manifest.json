@@ -1,8 +1,8 @@
 {
   "id": "dmn-plugin",
   "name": "DMN",
-  "version": "0.6.0",
-  "minAppVersion": "0.15.0",
+  "version": "1.0.0",
+  "minAppVersion": "1.13.0",
   "description": "DMN viewer and editor.",
   "author": "JoLeaf",
   "authorUrl": "https://github.com/JoLeaf",
