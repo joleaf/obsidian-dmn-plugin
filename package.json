@@ -26,8 +26,10 @@
     "typescript": "5.9.3"
   },
   "dependencies": {
+    "@bpmn-io/properties-panel": "^3.56.1",
     "diagram-js-grid": "^1.1.0",
     "diagram-js-minimap": "^5.2.0",
-    "dmn-js": "^17.12.3"
+    "dmn-js": "^17.12.3",
+    "dmn-js-properties-panel": "^3.12.0"
   }
 }

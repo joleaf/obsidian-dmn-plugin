@@ -24,11 +24,24 @@ declare module "diagram-js-minimap" {
     export default MinimapModule;
 }
 
+// dmn-js-properties-panel ships no types either; the two named exports
+// this plugin uses are didi module declarations (the properties panel
+// service plus the standard DMN properties provider).
+declare module "dmn-js-properties-panel" {
+    import type {ModuleDeclaration} from "didi";
+    export const DmnPropertiesPanelModule: ModuleDeclaration;
+    export const DmnPropertiesProviderModule: ModuleDeclaration;
+}
+
 // --- the surface of a dmn-js child viewer that this plugin uses ---
 
 interface DmnView {
     type: string;
     element: {id: string};
+    // the manager's view objects also carry the element's id and name
+    // (dmn-js-shared Manager.js _updateViews)
+    id: string;
+    name: string | undefined;
 }
 
 interface DmnCommandStack {

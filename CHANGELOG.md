@@ -2,6 +2,13 @@
 
 All changes to this plugin are listed here.
 
+## Unreleased
+
+### New
+
+- Properties panel in the modeler: select an element in the DRD view to edit its standard DMN properties (name, id, type, description) in a sidebar next to the canvas (toggleable in the plugin settings); the panel is only visible in the DRD view and can be collapsed or expanded with a button in the toolbar
+- Decision tabs in the modeler: a tab bar above the canvas lists the DRD view first and then every decision; click a tab to switch between them (the active tab is highlighted); the list updates automatically when decisions are added, removed, or renamed
+
 ## 1.0.0 (2026-10-07)
 
 ### Breaking Change

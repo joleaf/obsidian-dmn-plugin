@@ -14,6 +14,7 @@ export class ObsidianDmnPluginSettings {
     force_white_background_by_default: boolean = true;
     enable_minimap: boolean = true;
     enable_grid: boolean = true;
+    enable_properties_panel: boolean = false;
 }
 
 export class DMNParameterInfoModal extends Modal {
@@ -119,6 +120,11 @@ export class ObsidianDmnPluginSettingsTab extends PluginSettingTab {
                         name: "Enable grid",
                         desc: "Add a grid to the DRD view of the DMN modeler",
                         control: {type: "toggle", key: "enable_grid"},
+                    },
+                    {
+                        name: "Enable properties panel",
+                        desc: "Show a properties panel next to the DRD canvas to edit the selected element's standard DMN properties (name, id, type, description).",
+                        control: {type: "toggle", key: "enable_properties_panel"},
                     },
                 ],
             },
